@@ -1,10 +1,64 @@
+{% load static %}
 <html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../static/Service/css/navApp.css">
+    <link rel="stylesheet" href="{% static 'Service/css/testRead.css' %}">
+</head>
 <body>
-testRead
+    <nav>
+            <a href="{% url 'home' %}">책과 함께 춤을</a>
+            <div id="user">
+                <a>Welcome! {{user.username}}</a>
+                <a href="{% url 'signout' %}"><button class="btn primary">Logout</button></a>
+                <a href="{% url 'testUpload' %}"><button class="btn primary">new Post</button></a>
+            </div>
+    </nav>
+    <div id="username">{{user.username}}'s Post</div>
 
-{% for post in  posts%}
-    <img src="{{MEDIA_URL}}{{post.image}}"></img>
-    <img src="{{MEDIA_URL}}"></img>
-{% endfor %}
+    <img src="{{MEDIA_URL}}{{post_detail.image}}"></img>
+    <!-- <img src="{{MEDIA_URL}}"></img> -->
+    <br>
+
+    <div id="content">{{post_detail.body}}</div>
+
+<form action="{% url 'post_like' post_detail.id%}" method="POST">
+{% comment %} //form이 실행되면 post 형식으로 details.id(게시물의 id 값)을 담아서 post_like url을 실행해라 {% endcomment %}
+            {% csrf_token %}
+            <button type="submit" value="Like">좋아요</button>
+            </form>
+             좋아요 {{ post_detail.like_count }}개
+	    {% comment %} //게시물의 좋아요 갯수 {% endcomment %}
+            {% for like_user in post_detail.like_user_set.all %}
+	    {% comment %} // 게시물을 좋아요 누른 user들을 각각 like_user에 담고 {% endcomment %}
+              {{ like_user.username }}
+	    {% comment %} //like_user에 담긴 유저들의 이름을 나타내라 {% endcomment %}
+            {% endfor %}
+
+
+    <div id='comment' style='text-align:center';>
+        <!-- # 작성된 comment 보여주기 -->
+        <h2><strong>Comments</strong></h2>
+        <!-- # details라는 객체에 종속되는 comments객체를 불러서 사용한다. (comment model의 related_name을 사용한다.) -->
+        {% for comment in post_detail.comments.all %}
+            <span>글쓴날짜 : </span>{{comment.created_date}}<br>
+            <span>글쓴이 : </span><strong>{{comment.comment_author}}</strong><br>
+            <span>글쓴내용 : </span><p>{{comment.comment_contents}}</p>
+        <!-- # comment 객체가 하나라도 없으면 아래 출력 -->
+        {% empty %}
+            <p>No comments here yet </p>
+        {% endfor %}
+        <!-- # comment 입력받는 폼 생성 -->
+        <h2><strong>Create Comments</strong></h2>
+        <div class="container">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <input type="text" name="comment_author" placeholder="이름" ><br><br>
+                <textarea name="comment_contents" placeholder="댓글내용"></textarea><br>
+                <button type="submit">등록</button>
+            </form>
+        </div>
+    </div>
+
 </body>
 </html>

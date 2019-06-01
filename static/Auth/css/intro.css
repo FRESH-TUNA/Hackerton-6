@@ -1,0 +1,121 @@
+@font-face { font-family: 'Arita-dotum-Medium'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Arita-dotum-Medium.woff') format('woff'); font-weight: normal; font-style: normal; }
+@import url('https://fonts.googleapis.com/css?family=Oswald:400,700&display=swap');
+
+.index_box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+    background-image: url("/static/Auth/img/background.png");
+}
+.index_container{
+    border-top: 4px solid black;
+    border-bottom: 4px solid black;
+    border-top-left-radius: 10%;
+    border-top-right-radius: 10%;
+    border-bottom-right-radius: 10%;
+    border-bottom-left-radius: 10%;
+    padding: 50px;
+    width: 250px;
+    background-color: white;
+}
+.index_title{
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    font-family: 'Kaushan Script', cursive;
+    font-weight: 700;
+}
+.index_signinbox{
+    margin-left: 10px;
+}
+.index_signinID, .index_signinPWD{
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+}
+.index_signinID_text, .index_signinPWD_text{
+    width: 43px;
+    text-align: right;
+    line-height: 25px;
+    font-family: 'BenchNine', Arial, sans-serif;
+    font-weight: 700;
+}
+.signupbox{
+    display: flex;
+    justify-content: center;
+}
+.signup_item{
+    margin: 10px;
+}
+.image{
+    display: flex;  
+    justify-content: center;    
+}
+.mark{
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 30px;
+}
+.ID, .PWD{
+    padding: 4px 0 4px 4px;
+    border: 1px solid white;
+    border-bottom: 2px solid gray;
+    outline: none;
+}
+
+@import url(https://fonts.googleapis.com/css?family=BenchNine:700);
+.snip1535 {
+  background-color: gray;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'BenchNine', Arial, sans-serif;
+  font-size: 1em;
+  font-size: 15px;
+  line-height: 1em;
+  margin: 10px 20px;
+  outline: none;
+  padding: 10px 15px 8px;
+  position: relative;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.snip1535:before,
+.snip1535:after {
+  border-color: transparent;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  border-style: solid;
+  border-width: 0;
+  content: "";
+  height: 24px;
+  position: absolute;
+  width: 24px;
+}
+.snip1535:before {
+  border-color: gray;
+  border-right-width: 2px;
+  border-top-width: 2px;
+  right: -5px;
+  top: -5px;
+}
+.snip1535:after {
+  border-bottom-width: 2px;
+  border-color: gray;
+  border-left-width: 2px;
+  bottom: -5px;
+  left: -5px;
+}
+.snip1535:hover,
+.snip1535.hover {
+  background-color: gray;
+}
+.snip1535:hover:before,
+.snip1535.hover:before,
+.snip1535:hover:after,
+.snip1535.hover:after {
+  height: 100%;
+  width: 100%;
+}

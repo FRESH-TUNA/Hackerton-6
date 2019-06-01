@@ -1,0 +1,51 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Board</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../static/Service/css/navApp.css">
+    <link rel="stylesheet" href="../../static/Service/css/footerApp.css">
+    <link rel="stylesheet" href="../../static/Service/css/contentApp.css">
+</head>
+
+<body>
+    <nav>
+        <a href="{% url 'home' %}">책과 함께 춤을</a>
+        <div id="user">
+            <a>Welcome!  {{user.username}}</a>
+            <a href="{% url 'signout' %}"><button class="btn primary">Logout</button></a>
+            <a href="{% url 'testUpload' %}"><button class="btn primary">new Post</button></a>
+        </div>
+    </nav>
+
+    <div id="contentApp">
+        {% for post in posts %}
+        <div class="content">
+            <a href="{% url 'post_detail' post.id %}"><img class="postImage" src="/media/{{post.image}}"></a>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!--footer-->
+    <footer>
+        <div class="footerEle" id="footerCopy">
+            <h4>About Production</h4>
+            <p>Copyright &copy; 2019 Likelion has All Right Reserved. </p>
+        </div>
+
+        <div class="footerEle" id="footerMember">
+            <center><h4 class = "center"> 구성원 </h4></center>
+            <p>김동원 전판근</p>
+            <p>안종원 효진</p>
+        </div>
+        
+        <div class="footerEle" id="footerLikeLion">
+            <img id="likelion"  src="https://likelion.net/assets/logo/likelion-white-a930fbcdf3042a50ba882ece9c02f43536971297a8e143e212d9b92d653bfa44.png">
+        </div>
+    </footer>
+</body>
+
+</html>

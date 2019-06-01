@@ -1,9 +1,27 @@
+{% load staticfiles %}
 <html>
+    <head>
+        <link rel="stylesheet" href="{% static 'Service/css/upload.css' %}">
+    </head>
 <body>
-<form action="" method="POST" enctype="multipart/form-data">
+<div class="posting_contain1">
+<form action="{% url 'testUpload'%}" method="POST" enctype="multipart/form-data">
+    <div class="posting_contain2">
     {% csrf_token %}
-    <input type="file" name="image">
-    <input type="submit" name="submit">
+    <input class="upload_title" type="text" value="제목" onclick=this.value=''>
+    <div class="paper_contain">
+    <div class="paper">
+        <div class="paper-content">
+            <textarea name="body"></textarea>
+        </div>
+    </div>
+    </div>
+    <input class="upload_image" type="file" name="image">
+    <div class="upload-btn-wrapper">
+            <button class="btn">Upload<input class="upload_submit" type="submit" name="submit" /></button>
+    </div>
+    </div>
 </form>
+</div>
 </body>
 </html>

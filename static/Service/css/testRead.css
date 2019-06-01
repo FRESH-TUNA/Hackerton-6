@@ -1,0 +1,40 @@
+body {
+    padding: 100px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+#username {
+    border: 3px solid black;
+
+    height: 60px;
+    font-size: 20px;
+    margin-bottom: 10px;
+
+    text-align: center;
+
+    padding: 10px;
+}
+
+#content {
+    border: 3px solid black;
+
+    height: 120px;
+    font-size: 20px;
+    margin-bottom: 10px;
+
+    text-align: center;
+
+    padding: 10px;
+}
+
+#comment {
+    border: 3px solid black;
+
+    font-size: 20px;
+
+    text-align: center;
+
+    padding: 10px;
+}
