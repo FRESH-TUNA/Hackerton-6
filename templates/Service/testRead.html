@@ -1,0 +1,10 @@
+<html>
+<body>
+testRead
+
+{% for post in  posts%}
+    <img src="{{MEDIA_URL}}{{post.image}}"></img>
+    <img src="{{MEDIA_URL}}"></img>
+{% endfor %}
+</body>
+</html>
