@@ -27,8 +27,8 @@
             </div>
             <div class="index_title">
                 Dance with book
-            </div>
-            <form action="{% url 'signin' %}" method="POST">
+            </div>   
+            <form action="{% url 'Auth:signin' %}?next={{ request.GET.next }}" method="POST">
                 {% csrf_token %}
                 <div class="index_signinbox">
                     <div class="index_signinID">

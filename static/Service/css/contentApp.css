@@ -1,12 +1,14 @@
 #contentApp {
-    width: 100%;
     padding-top: 50px;
     padding-bottom: 300px;
+    background-color: rgb(245, 244, 248);
 
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;    
-    background-color: rgb(245, 244, 248);
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    margin: 0 auto;
+    width: 65%; 
+    max-width: 1000px;
 }
 
 .content {

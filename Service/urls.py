@@ -14,5 +14,4 @@ urlpatterns = [
     path('home/<int:post_id>/post', views.testRead, name = "post_detail"),
     path('<int:post_id>/comment', views.comment, name = "comment"),
     path('post_like/<int:post_id>/', views.post_like, name = "post_like"),
-
 ]

@@ -16,18 +16,42 @@
         <a href="{% url 'home' %}">책과 함께 춤을</a>
         <div id="user">
             <a>Welcome!  {{user.username}}</a>
-            <a href="{% url 'signout' %}"><button class="btn primary">Logout</button></a>
+            <a href="{% url 'Auth:signout' %}"><button class="btn primary">Logout</button></a>
             <a href="{% url 'testUpload' %}"><button class="btn primary">new Post</button></a>
         </div>
     </nav>
 
     <div id="contentApp">
-        {% for post in posts %}
-        <div class="content">
-            <a href="{% url 'post_detail' post.id %}"><img class="postImage" src="/media/{{post.image}}"></a>
-        </div>
-        {% endfor %}
+            {% for post in posts %}
+            <div class="content">
+                <a href="{% url 'post_detail' post.id %}"><img class="postImage" src="/media/{{post.image}}"></a>
+            </div>
+            {% endfor %}
     </div>
+
+    {% if posts.has_other_pages %}
+        <ul class="pagination">
+            {% if posts.has_previous %}
+            <li><a href="?page={{ posts.previous_page_number }}">&laquo;</a></li>
+            {% else %}
+            <li class="disabled"><span>&laquo;</span></li>
+            {% endif %}
+
+            {% for i in posts.paginator.page_range %}
+            {% if posts.number == i %}
+                <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+            {% else %}
+                <li><a href="?page={{ i }}">{{ i }}</a></li>
+            {% endif %}
+            {% endfor %}
+
+            {% if posts.has_next %}
+            <li><a href="?page={{ posts.next_page_number }}">&raquo;</a></li>
+            {% else %}
+            <li class="disabled"><span>&raquo;</span></li>
+            {% endif %}
+        </ul>
+    {% endif %}
 
     <!--footer-->
     <footer>

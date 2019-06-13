@@ -17,6 +17,7 @@ def signup(request):
 
 def signin(request):
     if request.method == 'POST':
+        next=request.GET.get('next')
         user = auth.authenticate(
             request,
             username=request.POST['username'],
@@ -24,10 +25,15 @@ def signin(request):
         )
         if user is not None:
             auth.login(request, user)
-            return redirect('home')
+            if next == '':
+                return redirect('home')
+            else:
+                return redirect(next)
+        elif next == '':
+            return redirect('/')
         else:
-            return redirect('intro')
+            return redirect('/?next=' + next)
 
 def signout(request):
     auth.logout(request)
-    return redirect('intro')
+    return redirect('Auth:intro')
